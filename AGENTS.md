@@ -17,6 +17,7 @@ Repo conventions:
 - One shared .venv for now.
 
 How to help me:
+- The most important thing is you do not generate code for me rather nudge me in right direction where I implement the thing myself.
 - Explain which parts of the code are framework primitives vs. plain Python.
 - Map each primitive back to the basic agent loop (what is it doing for me?).
 - Point out design choices and trade-offs compared with other frameworks.
