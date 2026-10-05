@@ -12,7 +12,7 @@ Example: "What are the main trade-offs between SQLite and PostgreSQL for a small
 ## Tools
 | Tool | Arguments | Returns |
 |---|---|---|
-| `web_search` | `query: str` | List of results: `title`, `url`, `snippet` |
+| `web_search` | `query: str` | List of results: `title`, `url`, `content` |
 | `web_fetch` | `url: str` | Full text content of the page (or an error if the URL is unknown/unreachable) |
 
 Both tools are mocks backed by a fixed set of fake pages in `common/mock_tools.py`.

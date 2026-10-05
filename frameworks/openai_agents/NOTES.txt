@@ -1,0 +1,17 @@
+openai-agents SDK — research agent
+
+Loop: Runner.run = model → tools → feed back → repeat. Model owns flow. max_turns bounds it.
+State: the conversation. to_input_list() gives it back. No memory.
+See what happened: result.new_items (typed transcript). Raw payloads: OPENAI_LOG=debug.
+
+INSIGHT: output_type (json_schema on every turn) makes weak models skip tools entirely —
+they emit the JSON on turn 1, hallucinate sources. Same prompt without output_type:
+9 tool calls, reworded searches, recovered from dead link. Format constraint rewards
+instant compliance; tool use needs an "unfinished" turn. Strong models do both.
+Fixes: two-agent split (researcher → writer), parse JSON yourself, or better model.
+tool_choice="required" applies to all turns → agent can never stop. No per-turn forcing.
+
+Gotchas:
+- Prompt prose and auto-generated tool schema are separate channels; they can contradict.
+- Tool errors reach the model as plain strings — it recovers.
+- openrouter/free routing varies per request → runs not reproducible.
